@@ -14,7 +14,7 @@ export const Header = () => {
       <motion.nav 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="w-full max-w-5xl backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 shadow-lg"
+        className="w-full max-w-7xl backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 shadow-lg"
       >
         <ul className="flex justify-between items-center text-xl font-medium text-white">
           <li className="flex items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
