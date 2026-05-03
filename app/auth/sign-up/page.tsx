@@ -1,11 +1,14 @@
 "use client";
 import { useState } from "react";
 import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
 
 export const Page = () => {
   const [name, setname] = useState("");
   const [email, setUserEmail] = useState("");
   const [password, setUserPasswrod] = useState("");
+
+  const router = useRouter();
 
  const handleSubmit = async () => {
   const res = await fetch("http://localhost:8080/signup", {
@@ -28,7 +31,7 @@ export const Page = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-lg bg-white/5 backdrop-blur-xl  rounded-3xl p-8 shadow-2xl"
+        className="w-full max-w-lg bg-white/5 backdrop-blur-xl rounded-sm p-8 shadow-2xl"
       >
         <h2 className="text-3xl font-bold text-white mb-6 text-center">
           Welcome back
@@ -78,7 +81,7 @@ export const Page = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleSubmit}
-            className="w-full mt-6 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl shadow-lg shadow-blue-500/20 transition-colors"
+            className="w-full mt-6 bg-white text-black font-semibold py-3 rounded-xl shadow-lg shadow-blue-500/20 transition-colors"
           >
             Sign Up
           </motion.button>
@@ -86,7 +89,7 @@ export const Page = () => {
 
         <p className="text-center text-gray-500 text-sm mt-6">
           Dont have an account?{" "}
-          <span className="text-blue-400 cursor-pointer hover:underline">
+          <span onClick={()=>(router.push("/auth/sign-in"))} className="text-blue-400 cursor-pointer hover:underline">
             Sign In
           </span>
         </p>

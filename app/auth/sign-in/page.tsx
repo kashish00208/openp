@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-
+import { useRouter } from "next/navigation";
 const Page = () => {
   const [email, setUserEmail] = useState("");
   const [password, setUserPassword] = useState("");
   const [error, setError] = useState("");
-
+  const router = useRouter()
   const handleSubmit = async () => {
     setError("");
 
@@ -74,7 +74,7 @@ const Page = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleSubmit}
-            className="w-full mt-6 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl shadow-lg shadow-blue-500/20 transition-colors"
+            className="w-full mt-6 bg-white text-black font-semibold py-3 rounded-xl shadow-lg transition-colors"
           >
             Sign In
           </motion.button>
@@ -88,7 +88,7 @@ const Page = () => {
 
         <p className="text-center text-gray-500 text-sm mt-6">
           Dont have an account?{" "}
-          <span className="text-blue-400 cursor-pointer hover:underline">
+          <span onClick={() => { router.push("/auth/sign-up") }} className="text-blue-400 cursor-pointer hover:underline">
             Sign Up
           </span>
         </p>

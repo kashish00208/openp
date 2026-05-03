@@ -1,11 +1,11 @@
-import React from "react";
+"use client"
 import { Inter, JetBrains_Mono } from "next/font/google";
-
+import { useRouter } from "next/navigation";
 const inter = Inter({ subsets: ["latin"], weight: ["700", "800"] });
 const mono = JetBrains_Mono({ subsets: ["latin"] });
 
 const Homepage = () => {
-  
+  const router = useRouter();
 
   return (
     <div className={`min-h-screen bg-black text-white/80 overflow-hidden relative ${mono.className}`}>
@@ -32,7 +32,7 @@ const Homepage = () => {
           </div>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12" onClick={()=>{router.push("/auth/sign-up")}}>
           <button className="group flex items-center gap-4 bg-white text-black px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-[#FF5C00] hover:text-white transition-all">
             Get Started
             <span className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
@@ -43,7 +43,7 @@ const Homepage = () => {
       </main>
 
      
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_4px,3px_100%]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-size-[100%_4px,3px_100%]" />
     </div>
   );
 };
