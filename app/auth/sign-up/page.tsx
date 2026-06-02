@@ -44,7 +44,7 @@ const Page = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex justify-center items-center px-4 bg-zinc-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:32px_32px]">
+    <div className="relative min-h-screen w-full flex justify-center items-center px-4 bg-zinc-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size:[32px_32px]">
       
      <div className="absolute inset-0 bg-zinc-950 mask-[radial-gradient(ellipse_60%_60%_at_50%_50%,transparent_20%,black_100%)] pointer-events-none"></div>
 
