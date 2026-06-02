@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [email, setUserEmail] = useState("");
+  const [name,setUserName] = useState("")
   const [password, setUserPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
@@ -14,12 +15,13 @@ const Page = () => {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:8080/signin", {
+      const res = await fetch("http://localhost:8080/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          name,
           email,
           password,
         }),
@@ -61,11 +63,18 @@ const Page = () => {
           </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">
-          Welcome back
-        </h2>
-
+       
         <div className="space-y-5">
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-medium text-gray-400 ml-1">Name</label>
+            <input
+              type="email"
+              placeholder="John Doe"
+              value={email}
+              onChange={(e) => setUserName(e.target.value)}
+              className="bg-white/5 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-white/30 focus:bg-white/10 transition-all placeholder:text-gray-600"
+            />
+          </div>
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-gray-400 ml-1">Email</label>
             <input
@@ -108,13 +117,13 @@ const Page = () => {
           </motion.div>
         )}
 
-        <p className="text-center text-gray-500 text-sm mt-8">
+        <p className="text-center text-gray-500 text-sm mt-8 hover:cursor-pointer">
           Don't have an account?{" "}
           <span 
             onClick={() => router.push("/auth/sign-up")} 
             className="text-white cursor-pointer hover:underline font-medium"
           >
-            Sign Up
+            Sign In
           </span>
         </p>
       </motion.div>
