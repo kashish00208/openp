@@ -25,7 +25,7 @@ const itemVariants: Variants = {
     y: 0, 
     transition: { 
       duration: 0.8, 
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number] 
+      ease: [0.16, 1, 0.3, 1] 
     } 
   },
 };
@@ -36,27 +36,29 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <div className={`min-h-screen bg-black text-white/80 overflow-hidden relative ${mono.className}`}>
-        <main className="relative z-10 flex flex-col justify-center h-screen px-8 md:px-16 max-w-7xl">
+    
+      <div className={`relative min-h-screen w-full overflow-hidden bg-zinc-950 text-white/80 ${mono.className} bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[64px_64px]`}>
+        
+        <div className="absolute inset-0 bg-zinc-950 mask-[radial-gradient(ellipse_60%_60%_at_50%_50%,transparent_20%,black_100%)] pointer-events-none z-0"></div>
+
+        <main className="relative z-10 flex flex-col justify-center min-h-screen px-6 md:px-16  mx-auto">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="show"
             className={inter.className}
           >
-            {/* Animated Heading */}
             <motion.h1 
               variants={itemVariants} 
-              className="text-8xl font-extrabold leading-[0.9] mb-8"
+              className="text-4xl md:text-8xl font-extrabold leading-[0.9] mb-8 text-white"
             >
               Paper Analysis,<br />
               Synthesis,<br />
               Writing
             </motion.h1>
 
-            {/* Animated Subtitle Text */}
             <motion.div variants={itemVariants} className="max-w-xl space-y-4">
-              <p className="text-slate-400 text-lg md:text-xl font-medium leading-snug">
+              <p className="text-slate-300 text-md md:text-xl font-medium leading-snug">
                 AI research assistant with multi-model capability to analyze,
                 summarize, and write academic papers.
               </p>
@@ -65,13 +67,12 @@ const Homepage = () => {
               </p>
             </motion.div>
 
-            {/* Animated & Interactive Button */}
             <motion.div variants={itemVariants} className="mt-12">
               <motion.button 
                 onClick={() => { router.push("/auth/sign-up") }}
                 whileHover={{ scale: 1.02 }} 
                 whileTap={{ scale: 0.96 }}   
-                className="group flex items-center gap-4 bg-white text-black px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-[#FF5C00] hover:text-white transition-colors duration-300"
+                className="group flex items-center gap-4 bg-white text-black px-4 py-2 md:px-8 md:py-4 font-bold uppercase tracking-widest text-sm hover:bg-gray-200 transition-colors duration-300 shadow-lg shadow-white/5"
               >
                 Get Started
                 <span className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
@@ -81,14 +82,6 @@ const Homepage = () => {
             </motion.div>
           </motion.div>
         </main>
-
-        {/* Breathing Animation for the Background Overlay */}
-        <motion.div 
-          initial={{ opacity: 0.5 }}
-          animate={{ opacity: [0.4, 0.7, 0.4] }} 
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-size-[100%_4px,3px_100%]" 
-        />
       </div>
     </>
   );
