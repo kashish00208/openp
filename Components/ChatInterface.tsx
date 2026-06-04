@@ -2,15 +2,12 @@
 import { PiBookOpenUserLight } from "react-icons/pi";
 import { TiPlus } from "react-icons/ti";
 import { FaHistory } from "react-icons/fa";
-import ChatInterface from "@/Components/ChatInterface";
 
-const page = () => {
+const profile = () => {
   return (
     <div className='h-full w-full flex justify-center items-center'>
       <div className='flex w-full m-2 mt-3'>
-
         <div className='h-screen w-full flex'>
-          {/* sidebar */}
           <div className='w-1/6 border-r border-white/15 p-2'>
             <div className="flex justify-between">
               <li className="flex items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity list-none">
@@ -36,13 +33,10 @@ const page = () => {
               </button>
             </div>
           </div>
-
         </div>
-
-
       </div>
     </div>
   )
 }
 
-export default page
+export default profile;
