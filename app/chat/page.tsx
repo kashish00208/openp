@@ -13,6 +13,7 @@ interface Message {
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +46,14 @@ export default function ChatPage() {
 
       const data = await response.json();
       console.log(data);
+
+      const chatResponse = await fetch("http://localhost:8080/api/chat/groq",{
+        method: "POST",
+        body: input,
+      });
+      if (!response.ok) {
+        throw new Error("Upload failed try again");
+      }
     } catch (error) {
       console.error("Error uploading file", error);
     }
@@ -123,7 +132,6 @@ export default function ChatPage() {
       <div className="w-full max-w-4xl mt-4">
         <div className="flex items-center h-16 sm:h-20 px-4 sm:px-6 rounded-full border border-zinc-800 bg-linear-to-b from-[#0f0f0f] to-[#111111] shadow-[0_0_20px_rgba(255,255,255,0.03)] w-full">
           
-          {/* FIX: Changed button to a label with a hidden file input */}
           <label className="text-white hover:text-zinc-300 transition shrink-0 cursor-pointer flex items-center justify-center">
             <Paperclip size={24} strokeWidth={2} />
             <input
@@ -131,7 +139,7 @@ export default function ChatPage() {
               className="hidden"
               onChange={handleFileSelect}
               ref={fileInputRef}
-              accept=".pdf" // Optional: restrict to PDFs since your function is named uploadPdf
+              accept=".pdf" 
             />
           </label>
 
